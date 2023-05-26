@@ -70,7 +70,7 @@ func (s *Supervisor) Start() error {
 			}
 			err := s.cmd.Process.Signal(sig)
 			if err != nil {
-				log.Error("Signal propegation failed: ", "error", err)
+				log.Error(err, "Signal propegation failed")
 			}
 		}
 	}()
@@ -139,7 +139,7 @@ func (s *Supervisor) ShutdownWithTimeout(timeout time.Duration) error {
 		err := s.ShutdownNow()
 		if err != nil {
 			// TODO: ignorable?
-			log.Error("Failed after timeout: ", "error", err)
+			log.Error(err, "Failed after timeout")
 		}
 	})
 
